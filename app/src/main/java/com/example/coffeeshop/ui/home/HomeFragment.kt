@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.coffeeshop.databinding.FragmentHomeBinding
 import com.example.coffeeshop.utility.formatTime
+import com.example.coffeeshop.utility.toJson
 import com.example.coffeeshop.widgets.LoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -58,6 +60,9 @@ class HomeFragment : Fragment() {
             fabCheckOut.setOnClickListener {
                 if (viewModel.orderList.isNotEmpty()) {
                     //navigate to summary
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSummaryFragment(
+                        viewModel.orderList.toJson()
+                    ))
                 }
             }
         }

@@ -3,6 +3,7 @@ package com.example.coffeeshop.utility
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.example.coffeeshop.R
+import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.TimeZone
 
@@ -29,3 +30,5 @@ fun ImageView.loadImage(url: String) {
         .placeholder(R.drawable.ic_coffee)
         .into(this)
 }
+
+fun Any.toJson(): String = Gson().toJson(this)

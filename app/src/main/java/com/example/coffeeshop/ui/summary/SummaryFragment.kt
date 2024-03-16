@@ -11,6 +11,10 @@ class SummaryFragment : Fragment() {
 
     private lateinit var binding: FragmentSummaryBinding
 
+    private val data by lazy {
+        SummaryFragmentArgs.fromBundle(requireArguments()).data
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,6 +26,9 @@ class SummaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (data.isNotBlank()){
+
+        }
     }
 
 }
