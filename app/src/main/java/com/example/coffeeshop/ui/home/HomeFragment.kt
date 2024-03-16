@@ -37,7 +37,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadingDialog = LoadingDialog(requireContext())
-        productListAdapter = ProductListAdapter {  }
+        productListAdapter = ProductListAdapter { product, quantity, isSelect ->
+            val order = Pair(product, quantity)
+            if (isSelect) {
+                viewModel.orderList.add(order)
+            } else {
+                viewModel.orderList.removeIf { it.first == order.first }
+            }
+        }
         setUpView()
         observeLiveData()
     }
@@ -47,6 +54,11 @@ class HomeFragment : Fragment() {
             rvProducts.apply {
                 layoutManager = GridLayoutManager(requireContext(), 2)
                 adapter = productListAdapter
+            }
+            fabCheckOut.setOnClickListener {
+                if (viewModel.orderList.isNotEmpty()) {
+                    //navigate to summary
+                }
             }
         }
     }

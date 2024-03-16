@@ -11,7 +11,7 @@
     <style name="Theme.CoffeeShop" parent="Base.Theme.CoffeeShop" />
 
     <style name="labelStyle" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/coffee_4</item>
+        <item name="android:textColor">@color/coffee_3</item>
         <item name="android:textSize">@dimen/_16sp</item>
     </style>
 

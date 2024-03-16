@@ -28,6 +28,8 @@ class HomeViewModel @Inject constructor(
 
     val loading = MutableLiveData<Boolean>()
 
+    val orderList = mutableListOf<Pair<Product,Int>>()
+
     init {
         getStoreInfo()
         getProducts()

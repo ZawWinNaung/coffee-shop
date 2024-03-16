@@ -6,4 +6,8 @@
     <string name="buy">Buy</string>
     <string name="products">Products</string>
     <string name="currency">%1$s ฿</string>
+    <string name="summary">Summary</string>
+    <string name="price">Price</string>
+    <string name="quantity">Quantity</string>
+    <string name="buy_now">Pay Now</string>
 </resources>
