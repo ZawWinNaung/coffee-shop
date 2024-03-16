@@ -5,11 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.coffeeshop.data.model.Order
 import com.example.coffeeshop.databinding.FragmentHomeBinding
 import com.example.coffeeshop.utility.formatTime
 import com.example.coffeeshop.utility.toJson
@@ -40,11 +42,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         loadingDialog = LoadingDialog(requireContext())
         productListAdapter = ProductListAdapter { product, quantity, isSelect ->
-            val order = Pair(product, quantity)
+            val order = Order(
+                name = product.name ?: "",
+                price = product.price ?: 0,
+                imageUrl = product.imageUrl ?: "",
+                quantity = quantity
+            )
             if (isSelect) {
                 viewModel.orderList.add(order)
             } else {
-                viewModel.orderList.removeIf { it.first == order.first }
+                viewModel.orderList.removeIf { it.name == order.name && it.price == order.price && it.imageUrl == order.imageUrl }
             }
         }
         setUpView()
@@ -59,10 +66,12 @@ class HomeFragment : Fragment() {
             }
             fabCheckOut.setOnClickListener {
                 if (viewModel.orderList.isNotEmpty()) {
-                    //navigate to summary
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSummaryFragment(
-                        viewModel.orderList.toJson()
-                    ))
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionHomeFragmentToSummaryFragment(
+                            data = viewModel.orderList.toJson()
+                        )
+                    )
+                    viewModel.orderList.clear()
                 }
             }
         }

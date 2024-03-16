@@ -9,5 +9,6 @@
     <string name="summary">Summary</string>
     <string name="price">Price</string>
     <string name="quantity">Quantity</string>
-    <string name="buy_now">Pay Now</string>
+    <string name="confirm">Confirm</string>
+    <string name="multiply">x %1$s</string>
 </resources>

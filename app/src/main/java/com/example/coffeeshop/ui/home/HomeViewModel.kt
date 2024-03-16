@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coffeeshop.core.ApiResult
+import com.example.coffeeshop.data.model.Order
 import com.example.coffeeshop.data.remote.repo.ApiServiceRepo
 import com.example.coffeeshop.data.remote.response.Product
 import com.example.coffeeshop.data.remote.response.StoreInfoResponse
@@ -28,7 +29,7 @@ class HomeViewModel @Inject constructor(
 
     val loading = MutableLiveData<Boolean>()
 
-    val orderList = mutableListOf<Pair<Product,Int>>()
+    val orderList = mutableListOf<Order>()
 
     init {
         getStoreInfo()
