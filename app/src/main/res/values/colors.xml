@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="coffee_1">#ECE0D1</color>
+    <color name="coffee_2">#DBC1AC</color>
+    <color name="coffee_3">#967259</color>
+    <color name="coffee_4">#634832</color>
+    <color name="coffee_5">#38220F</color>
 </resources>
