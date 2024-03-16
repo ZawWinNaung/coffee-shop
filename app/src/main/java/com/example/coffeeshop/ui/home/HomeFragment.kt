@@ -1,6 +1,7 @@
 package com.example.coffeeshop.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,11 +34,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadingDialog = LoadingDialog(requireContext())
-        viewModel.getStoreInfo()
         observeLiveData()
     }
 
     private fun observeLiveData() {
+        viewModel.loading.observe(viewLifecycleOwner) {
+            loadingDialog.isShow = it
+        }
+
         viewModel.storeInfo.observe(viewLifecycleOwner) {
             binding.tvShopName.text = it.name
             binding.tvRating.text = (it.rating ?: "-").toString()
@@ -45,8 +49,8 @@ class HomeFragment : Fragment() {
             binding.tvClose.text = it.closingTime.formatTime()
         }
 
-        viewModel.loading.observe(viewLifecycleOwner) {
-            loadingDialog.isShow = it
+        viewModel.productList.observe(viewLifecycleOwner) {
+            Log.d("#home", it.toString())
         }
     }
 }
