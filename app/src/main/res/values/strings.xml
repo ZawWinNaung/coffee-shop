@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Coffee Shop</string>
     <string name="rating">Rating</string>
+    <string name="open_at">Open at</string>
+    <string name="close_at">Close at</string>
+    <string name="buy">Buy</string>
+    <string name="products">Products</string>
+    <string name="currency">%1$s ฿</string>
 </resources>

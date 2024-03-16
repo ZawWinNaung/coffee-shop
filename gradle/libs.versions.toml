@@ -1,6 +1,7 @@
 [versions]
 agp = "8.3.0"
 androidxHiltLifecycleViewmodel = "1.0.0-alpha03"
+glide = "4.16.0"
 gson = "2.10.1"
 hiltAndroid = "2.49"
 hiltAndroidRetrofit = "2.38.1"
@@ -16,6 +17,7 @@ activity = "1.8.2"
 constraintlayout = "2.1.4"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
+numberpicker = "1.0.7"
 retrofitVersion = "2.9.0"
 
 [libraries]
@@ -23,6 +25,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltCompiler" }
 androidx-hilt-lifecycle-viewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "androidxHiltLifecycleViewmodel" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-retrofit = { module = "com.google.dagger:hilt-android-retrofit", version.ref = "hiltAndroidRetrofit" }
@@ -36,6 +39,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+numberpicker = { module = "com.github.travijuu:numberpicker", version.ref = "numberpicker" }
 retrofit2-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
 
 [plugins]
