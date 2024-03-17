@@ -41,7 +41,7 @@ class HomeViewModel @Inject constructor(
             when (val result = repo.getStoreInfo()) {
                 is ApiResult.Success -> {
                     loading.postValue(false)
-                    _storeInfo.postValue(result.data)
+                    _storeInfo.postValue(result.data.body())
                 }
 
                 is ApiResult.Error -> {
@@ -57,7 +57,7 @@ class HomeViewModel @Inject constructor(
             when (val result = repo.getProducts()) {
                 is ApiResult.Success -> {
                     loading.postValue(false)
-                    _productList.postValue(result.data)
+                    _productList.postValue(result.data.body())
                 }
 
                 is ApiResult.Error -> {
