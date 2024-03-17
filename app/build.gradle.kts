@@ -50,11 +50,15 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.junit.ktx)
     testImplementation(libs.junit)
+    testImplementation(libs.androidx.espresso.core)
     testImplementation(libs.mockito.core)
     testImplementation(libs.androidx.core.testing)
-    testImplementation(libs.mockk)
     testImplementation (libs.jetbrains.kotlinx.coroutines.test)
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation (libs.nhaarman.mockito.kotlin)
 
     // Retrofit
     implementation(libs.retrofit2.retrofit)

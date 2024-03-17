@@ -51,7 +51,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun getProducts() {
+    fun getProducts() {
         viewModelScope.launch {
             loading.postValue(true)
             when (val result = repo.getProducts()) {
