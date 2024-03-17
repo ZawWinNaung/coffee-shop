@@ -1,16 +1,17 @@
 package com.example.coffeeshop.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.coffeeshop.data.model.Order
 import com.example.coffeeshop.databinding.FragmentHomeBinding
 import com.example.coffeeshop.utility.formatTime
+import com.example.coffeeshop.utility.toJson
 import com.example.coffeeshop.widgets.LoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,7 +38,19 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadingDialog = LoadingDialog(requireContext())
-        productListAdapter = ProductListAdapter {  }
+        productListAdapter = ProductListAdapter { product, quantity, isSelect ->
+            val order = Order(
+                name = product.name ?: "",
+                price = product.price ?: 0,
+                imageUrl = product.imageUrl ?: "",
+                quantity = quantity
+            )
+            if (isSelect) {
+                viewModel.orderList.add(order)
+            } else {
+                viewModel.orderList.removeIf { it.name == order.name && it.price == order.price && it.imageUrl == order.imageUrl }
+            }
+        }
         setUpView()
         observeLiveData()
     }
@@ -47,6 +60,16 @@ class HomeFragment : Fragment() {
             rvProducts.apply {
                 layoutManager = GridLayoutManager(requireContext(), 2)
                 adapter = productListAdapter
+            }
+            fabCheckOut.setOnClickListener {
+                if (viewModel.orderList.isNotEmpty()) {
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionHomeFragmentToSummaryFragment(
+                            data = viewModel.orderList.toJson()
+                        )
+                    )
+                    viewModel.orderList.clear()
+                }
             }
         }
     }

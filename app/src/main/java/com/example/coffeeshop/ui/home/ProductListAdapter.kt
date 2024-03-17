@@ -10,7 +10,7 @@ import com.example.coffeeshop.data.remote.response.Product
 import com.example.coffeeshop.databinding.CoffeeItemBinding
 import com.example.coffeeshop.utility.loadImage
 
-class ProductListAdapter(private val itemClickListener: ((Product) -> Unit)?) :
+class ProductListAdapter(private val itemClickListener: ((Product, Int, Boolean) -> Unit)?) :
     ListAdapter<Product, ProductListAdapter.ProductViewHolder>(ProductDiffCallBack()) {
 
 
@@ -19,7 +19,7 @@ class ProductListAdapter(private val itemClickListener: ((Product) -> Unit)?) :
             LayoutInflater.from(parent.context),
             parent,
             false
-        )
+        ), itemClickListener
     )
 
     private class ProductDiffCallBack : DiffUtil.ItemCallback<Product>() {
@@ -36,19 +36,21 @@ class ProductListAdapter(private val itemClickListener: ((Product) -> Unit)?) :
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = currentList[position]
         holder.bind(product)
-        holder.itemView.setOnClickListener {
-
-        }
     }
 
-    class ProductViewHolder(private val binding: CoffeeItemBinding) :
+    class ProductViewHolder(
+        private val binding: CoffeeItemBinding,
+        private val itemClickListener: ((Product, Int, Boolean) -> Unit)?
+    ) :
         RecyclerView.ViewHolder(binding.root) {
-        val numberPicker = binding.numberPicker
         fun bind(data: Product) {
             binding.apply {
                 ivCoffee.loadImage(data.imageUrl ?: "")
                 tvName.text = data.name
                 tvAmount.text = root.context.getString(R.string.currency, data.price.toString())
+                cbSelect.setOnCheckedChangeListener { _, b ->
+                    itemClickListener?.invoke(data, numberPicker.value, b)
+                }
             }
         }
     }

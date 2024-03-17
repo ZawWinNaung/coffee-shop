@@ -1,11 +1,11 @@
 package com.example.coffeeshop.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coffeeshop.core.ApiResult
+import com.example.coffeeshop.data.model.Order
 import com.example.coffeeshop.data.remote.repo.ApiServiceRepo
 import com.example.coffeeshop.data.remote.response.Product
 import com.example.coffeeshop.data.remote.response.StoreInfoResponse
@@ -28,16 +28,17 @@ class HomeViewModel @Inject constructor(
 
     val loading = MutableLiveData<Boolean>()
 
+    val orderList = mutableListOf<Order>()
+
     init {
         getStoreInfo()
         getProducts()
     }
 
-    fun getStoreInfo() {
+    private fun getStoreInfo() {
         viewModelScope.launch {
             loading.postValue(true)
-            val result = repo.getStoreInfo()
-            when (result) {
+            when (val result = repo.getStoreInfo()) {
                 is ApiResult.Success -> {
                     loading.postValue(false)
                     _storeInfo.postValue(result.data)
@@ -50,11 +51,10 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getProducts() {
+    private fun getProducts() {
         viewModelScope.launch {
             loading.postValue(true)
-            val result = repo.getProducts()
-            when (result) {
+            when (val result = repo.getProducts()) {
                 is ApiResult.Success -> {
                     loading.postValue(false)
                     _productList.postValue(result.data)
