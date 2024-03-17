@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Coffee Shop</string>
+    <string name="rating">Rating</string>
+    <string name="open_at">Open at</string>
+    <string name="close_at">Close at</string>
+    <string name="buy">Buy</string>
+    <string name="products">Products</string>
+    <string name="currency">%1$s ฿</string>
+    <string name="summary">Summary</string>
+    <string name="price">Price</string>
+    <string name="quantity">Quantity</string>
+    <string name="confirm">Confirm</string>
+    <string name="multiply">x %1$s</string>
+    <string name="total">Total</string>
+    <string name="net_total">Net Total : </string>
+    <string name="hint_address">Enter your delivery address</string>
+    <string name="success_order">Success Order</string>
+    <string name="success_message">Your orders have been successfully placed.</string>
+    <string name="done">Done</string>
 </resources>

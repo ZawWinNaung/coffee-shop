@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.coffeeshop.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_summaryFragment"
+            app:destination="@id/summaryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/summaryFragment"
+        android:name="com.example.coffeeshop.ui.summary.SummaryFragment"
+        android:label="SummaryFragment"
+        tools:layout="@layout/fragment_summary">
+        <argument
+            android:name="data"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_summaryFragment_to_successFragment"
+            app:destination="@id/successFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/successFragment"
+        android:name="com.example.coffeeshop.ui.success.SuccessFragment"
+        android:label="SuccessFragment"
+        tools:layout="@layout/fragment_succcess_bottom_sheet"/>
+</navigation>
