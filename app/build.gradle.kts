@@ -51,22 +51,24 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.mockk)
+    testImplementation (libs.jetbrains.kotlinx.coroutines.test)
 
     // Retrofit
-    implementation (libs.retrofit2.retrofit)
-    implementation (libs.converter.gson)
+    implementation(libs.retrofit2.retrofit)
+    implementation(libs.converter.gson)
 
     // Gson
-    implementation (libs.gson)
+    implementation(libs.gson)
 
     // Dagger Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
     //Glide
-    implementation (libs.glide)
+    implementation(libs.glide)
 
     implementation(libs.numberpicker)
 
