@@ -1,19 +1,16 @@
 package com.example.coffeeshop.ui.summary
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.coffeeshop.R
 import com.example.coffeeshop.data.model.Order
-import com.example.coffeeshop.data.remote.response.Product
 import com.example.coffeeshop.databinding.FragmentSummaryBinding
 import com.example.coffeeshop.utility.toObject
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class SummaryFragment : Fragment() {
 
@@ -44,8 +41,18 @@ class SummaryFragment : Fragment() {
             val orderList: List<Order>? = data.toObject()
             orderList?.let {
                 orderListAdapter.submitList(it)
+                calculateNetTotal(it)
             }
         }
+    }
+
+    private fun calculateNetTotal(it: List<Order>) {
+        var netTotal = 0
+        it.forEach { order ->
+            netTotal += (order.price * order.quantity)
+        }
+        binding.tvNetTotal.text =
+            requireContext().getString(R.string.currency, netTotal.toString())
     }
 
     private fun setUpView() {
