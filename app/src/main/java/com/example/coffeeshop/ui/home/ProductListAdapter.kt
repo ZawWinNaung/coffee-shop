@@ -51,6 +51,9 @@ class ProductListAdapter(private val itemClickListener: ((Product, Int, Boolean)
                 cbSelect.setOnCheckedChangeListener { _, b ->
                     itemClickListener?.invoke(data, numberPicker.value, b)
                 }
+                numberPicker.setValueChangedListener { value, action ->
+                    cbSelect.isChecked = false
+                }
             }
         }
     }
