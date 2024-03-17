@@ -13,4 +13,8 @@
     <string name="multiply">x %1$s</string>
     <string name="total">Total</string>
     <string name="net_total">Net Total : </string>
+    <string name="hint_address">Enter your delivery address</string>
+    <string name="success_order">Success Order</string>
+    <string name="success_message">Your orders have been successfully placed.</string>
+    <string name="done">Done</string>
 </resources>

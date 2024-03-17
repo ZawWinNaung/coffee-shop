@@ -5,6 +5,8 @@
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_large">24dp</dimen>
 
+    <dimen name="text_input_corner_radius">20dp</dimen>
+
     <dimen name="_14sp">14sp</dimen>
     <dimen name="_16sp">16sp</dimen>
     <dimen name="_18sp">18sp</dimen>

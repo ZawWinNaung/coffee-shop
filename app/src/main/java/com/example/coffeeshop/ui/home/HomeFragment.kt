@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.coffeeshop.core.BaseFragment
 import com.example.coffeeshop.data.model.Order
 import com.example.coffeeshop.databinding.FragmentHomeBinding
 import com.example.coffeeshop.utility.formatTime
@@ -16,13 +17,11 @@ import com.example.coffeeshop.widgets.LoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel: HomeViewModel by viewModels()
-
-    private lateinit var loadingDialog: LoadingDialog
 
     private lateinit var productListAdapter: ProductListAdapter
 

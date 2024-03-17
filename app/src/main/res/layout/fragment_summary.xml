@@ -34,8 +34,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_medium"
+        android:clipToPadding="false"
         android:fadingEdge="horizontal"
-        android:fadingEdgeLength="@dimen/margin_large"
+        android:fadingEdgeLength="50dp"
+        android:fillViewport="true"
+        android:paddingBottom="@dimen/margin_small"
         app:layout_constraintBottom_toTopOf="@+id/btn_confirm"
         app:layout_constraintTop_toBottomOf="@id/tv_title">
 
@@ -48,8 +51,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
-                android:fadingEdge="horizontal"
-                android:fadingEdgeLength="@dimen/margin_large"
                 android:nestedScrollingEnabled="false"
                 android:paddingTop="@dimen/margin_small"
                 android:paddingBottom="@dimen/margin_small"
@@ -76,6 +77,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rv_order_list"
                 tools:text="16 B" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:hint="@string/hint_address"
+                android:textColorHint="@color/coffee_3"
+                app:boxCornerRadiusBottomEnd="@dimen/text_input_corner_radius"
+                app:boxCornerRadiusBottomStart="@dimen/text_input_corner_radius"
+                app:boxCornerRadiusTopEnd="@dimen/text_input_corner_radius"
+                app:boxCornerRadiusTopStart="@dimen/text_input_corner_radius"
+                app:boxStrokeColor="@color/coffee_3"
+                app:cursorColor="@color/coffee_5"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/coffee_5"
+                app:errorEnabled="true"
+                app:hintTextColor="@color/coffee_3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_net_total">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_address"
+                    android:layout_width="match_parent"
+                    android:imeOptions="actionDone"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/coffee_3"
+                    tools:text="testing" />
+            </com.google.android.material.textfield.TextInputLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

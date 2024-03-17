@@ -24,5 +24,13 @@
             android:name="data"
             android:defaultValue=""
             app:argType="string" />
+        <action
+            android:id="@+id/action_summaryFragment_to_successFragment"
+            app:destination="@id/successFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/successFragment"
+        android:name="com.example.coffeeshop.ui.success.SuccessFragment"
+        android:label="SuccessFragment"
+        tools:layout="@layout/fragment_succcess_bottom_sheet"/>
 </navigation>
