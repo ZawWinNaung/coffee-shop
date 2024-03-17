@@ -72,7 +72,7 @@ class HomeFragment : BaseFragment() {
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "Please choose the products first!",
+                        "Please choose the products first!!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
